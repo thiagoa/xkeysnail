@@ -87,6 +87,13 @@ def with_mark(combo):
     return _with_mark
 
 
+def toggle_mark():
+    def _set_mark():
+        global _mark_set
+        _mark_set = not _mark_set
+    return _set_mark
+
+
 def set_mark(mark_set):
     def _set_mark():
         global _mark_set
