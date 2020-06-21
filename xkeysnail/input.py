@@ -9,6 +9,8 @@ from .key import Key
 
 __author__ = 'zh'
 
+KNOWN_KEYBOARD_DEVICES = ['Logitech MX Keys']
+
 
 def get_devices_list():
     return [InputDevice(device_fn) for device_fn in reversed(list_devices())]
@@ -16,6 +18,8 @@ def get_devices_list():
 
 def is_keyboard_device(device):
     """Guess the device is a keyboard or not"""
+    if device.name in KNOWN_KEYBOARD_DEVICES:
+        return True
     capabilities = device.capabilities(verbose=False)
     if 1 not in capabilities:
         return False
@@ -175,4 +179,3 @@ def remove_device(devices, device):
         device.ungrab()
     except OSError as e:
         pass
-
