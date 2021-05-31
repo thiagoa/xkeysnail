@@ -19,7 +19,7 @@ def get_active_window_wm_class(display=Xlib.display.Display()):
     pair = get_class_name(current_window)
     if pair:
         # (process name, class name)
-        return str(pair[1])
+        return str(pair[0]) + "---" + str(pair[1])
     else:
         return ""
 
